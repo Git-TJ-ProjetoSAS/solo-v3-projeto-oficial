@@ -1,0 +1,1 @@
+ALTER TABLE public.talhoes ADD COLUMN agro_polygon_id text DEFAULT NULL;

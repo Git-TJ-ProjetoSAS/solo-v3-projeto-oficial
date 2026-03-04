@@ -1,0 +1,564 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* X/Twitter Dark Theme - Default is Dark */
+    --background: 0 0% 0%;
+    --foreground: 0 0% 97%;
+
+    --card: 0 0% 0%;
+    --card-foreground: 0 0% 97%;
+
+    --popover: 0 0% 7%;
+    --popover-foreground: 0 0% 97%;
+
+    /* X Blue Primary */
+    --primary: 204 85% 51%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Dark Gray Secondary */
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 0 0% 85%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 55%;
+
+    /* Accent - X Blue subtle */
+    --accent: 204 85% 51%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Status Colors */
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 142 70% 45%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 204 85% 51%;
+
+    --radius: 1rem;
+
+    /* Sidebar - Pure Black */
+    --sidebar-background: 0 0% 0%;
+    --sidebar-foreground: 0 0% 97%;
+    --sidebar-primary: 204 85% 51%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 10%;
+    --sidebar-accent-foreground: 0 0% 97%;
+    --sidebar-border: 0 0% 15%;
+    --sidebar-ring: 204 85% 51%;
+
+    /* Shadows for dark mode */
+    --shadow-subtle: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+    --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.4), 0 1px 2px -1px rgb(0 0 0 / 0.4);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.4);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.4), 0 4px 6px -4px rgb(0 0 0 / 0.4);
+  }
+
+  /* Light mode override (if needed) */
+  .light {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 8%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 8%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 8%;
+
+    --primary: 204 85% 51%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 20%;
+
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+
+    --accent: 204 85% 51%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 204 85% 51%;
+
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 0 0% 8%;
+    --sidebar-primary: 204 85% 51%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 96%;
+    --sidebar-accent-foreground: 0 0% 8%;
+    --sidebar-border: 0 0% 92%;
+    --sidebar-ring: 204 85% 51%;
+
+    --shadow-subtle: 0 1px 2px 0 rgb(0 0 0 / 0.03);
+    --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.05), 0 1px 2px -1px rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.05), 0 4px 6px -4px rgb(0 0 0 / 0.05);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    min-height: 100vh;
+  }
+
+  /* Premium Typography */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
+  }
+
+  h1 { @apply text-3xl md:text-4xl; }
+  h2 { @apply text-2xl md:text-3xl; }
+  h3 { @apply text-xl md:text-2xl; }
+  h4 { @apply text-lg md:text-xl; }
+}
+
+@layer components {
+  /* Premium Card with blue border */
+  .card-premium {
+    @apply bg-card border border-primary/30 rounded-2xl;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.15s ease, border-color 0.15s ease;
+  }
+
+  .card-premium:hover {
+    box-shadow: var(--shadow-md);
+    @apply border-primary/50;
+  }
+
+  /* Elevated Surface with blue border */
+  .surface-elevated {
+    @apply bg-card border border-primary/20 rounded-2xl;
+    box-shadow: var(--shadow-subtle);
+  }
+
+  /* Premium Button Base */
+  .btn-premium {
+    @apply inline-flex items-center justify-center font-medium transition-all duration-150;
+    @apply rounded-md px-4 py-2 text-sm;
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
+  }
+
+  .btn-primary {
+    @apply btn-premium bg-primary text-primary-foreground;
+    @apply hover:opacity-90 active:opacity-80;
+  }
+
+  .btn-secondary {
+    @apply btn-premium bg-secondary text-secondary-foreground;
+    @apply hover:bg-accent active:bg-accent/80;
+  }
+
+  .btn-outline {
+    @apply btn-premium border border-border bg-transparent;
+    @apply hover:bg-secondary active:bg-accent;
+  }
+
+  .btn-ghost {
+    @apply btn-premium bg-transparent;
+    @apply hover:bg-secondary active:bg-accent;
+  }
+
+  /* Premium Input */
+  .input-premium {
+    @apply w-full rounded-md border border-input bg-background px-3 py-2 text-sm;
+    @apply placeholder:text-muted-foreground;
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1;
+    @apply disabled:cursor-not-allowed disabled:opacity-50;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .input-premium:hover:not(:focus):not(:disabled) {
+    border-color: hsl(var(--border) / 0.6);
+  }
+
+  /* Stat Card */
+  .stat-card {
+    @apply card-premium p-5;
+  }
+
+  /* Menu Item */
+  .menu-item {
+    @apply flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium;
+    @apply text-muted-foreground transition-colors duration-100;
+    @apply hover:text-foreground hover:bg-secondary;
+  }
+
+  .menu-item.active {
+    @apply text-foreground bg-secondary;
+  }
+
+  /* Divider */
+  .divider {
+    @apply h-px bg-border;
+  }
+
+  /* Badge */
+  .badge-premium {
+    @apply inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium;
+    @apply bg-secondary text-secondary-foreground;
+  }
+
+  /* Legacy support */
+  .glass-card {
+    @apply card-premium;
+  }
+
+  .glass-card-strong {
+    @apply card-premium;
+  }
+
+  .glass-sidebar {
+    @apply bg-background border-r border-border;
+  }
+
+  .gradient-primary {
+    @apply bg-primary;
+  }
+
+  .input-agro {
+    @apply input-premium;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Minimal animations */
+  .animate-fade-in {
+    animation: fade-in 0.2s ease-out;
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.2s ease-out;
+  }
+
+  .animate-scale-in {
+    animation: scale-in 0.15s ease-out;
+  }
+}
+
+/* Keyframes */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slide-up {
+  from { 
+    opacity: 0; 
+    transform: translateY(8px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+@keyframes scale-in {
+  from { 
+    opacity: 0; 
+    transform: scale(0.98); 
+  }
+  to { 
+    opacity: 1; 
+    transform: scale(1); 
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--border));
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.3);
+}
+
+/* Safe area for mobile bottom navigation */
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Hide scrollbar on mobile for cleaner look */
+@media (max-width: 768px) {
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  
+  * {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Splash screen loading bar */
+@keyframes splash-bar {
+  0% { width: 0%; }
+  60% { width: 70%; }
+  100% { width: 100%; }
+}
+
+/* ─── Print Styles for Foliar Report ─── */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Hide non-printable elements */
+  .no-print,
+  nav,
+  [data-sidebar],
+  .mobile-bottom-nav,
+  header,
+  footer {
+    display: none !important;
+  }
+
+  /* Report styling for A4 */
+  .print-report {
+    max-width: 180mm !important;
+    margin: 0 auto !important;
+    padding: 10mm 15mm !important;
+    background: white !important;
+  }
+
+  .print-report * {
+    color: #1a1a1a !important;
+    border-color: #e0e0e0 !important;
+  }
+
+  .print-report .bg-secondary\/50,
+  .print-report .bg-secondary\/30 {
+    background: #f5f5f5 !important;
+  }
+
+  .print-report .bg-primary\/5,
+  .print-report .bg-primary\/10 {
+    background: #e8f4fd !important;
+  }
+
+  .print-report .bg-emerald-500\/10 {
+    background: #ecfdf5 !important;
+  }
+
+  .print-report .bg-red-500\/10 {
+    background: #fef2f2 !important;
+  }
+
+  .print-report .bg-amber-500\/10 {
+    background: #fffbeb !important;
+  }
+
+  .print-report .text-primary {
+    color: #1d9bf0 !important;
+  }
+
+  .print-report .text-emerald-500,
+  .print-report .text-emerald-600 {
+    color: #059669 !important;
+  }
+
+  .print-report .text-red-500,
+  .print-report .text-red-600 {
+    color: #dc2626 !important;
+  }
+
+  .print-report .text-amber-500 {
+    color: #d97706 !important;
+  }
+
+  .print-report .text-muted-foreground {
+    color: #6b7280 !important;
+  }
+
+  /* Prevent page breaks inside sections */
+  .print-report .break-inside-avoid {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* Adjust chart heights for print */
+  .print-report .h-2 {
+    height: 6px !important;
+  }
+
+  /* Compatibility group colors for print */
+  .print-report .bg-red-500\/15,
+  .print-report .bg-red-500\/20 {
+    background: #fef2f2 !important;
+  }
+  .print-report .text-red-400 {
+    color: #dc2626 !important;
+  }
+  .print-report .border-red-500\/40,
+  .print-report .border-red-500\/30,
+  .print-report .border-red-500\/20 {
+    border-color: #fca5a5 !important;
+  }
+
+  .print-report .bg-yellow-500\/15,
+  .print-report .bg-yellow-500\/20 {
+    background: #fffbeb !important;
+  }
+  .print-report .text-yellow-400 {
+    color: #d97706 !important;
+  }
+  .print-report .border-yellow-500\/40,
+  .print-report .border-yellow-500\/30 {
+    border-color: #fcd34d !important;
+  }
+
+  .print-report .bg-green-500\/15,
+  .print-report .bg-green-500\/20 {
+    background: #ecfdf5 !important;
+  }
+  .print-report .text-green-400 {
+    color: #059669 !important;
+  }
+  .print-report .border-green-500\/40,
+  .print-report .border-green-500\/30 {
+    border-color: #6ee7b7 !important;
+  }
+
+  .print-report .bg-purple-500\/15,
+  .print-report .bg-purple-500\/20,
+  .print-report .bg-purple-500\/10 {
+    background: #faf5ff !important;
+  }
+  .print-report .text-purple-400,
+  .print-report .text-purple-500 {
+    color: #7c3aed !important;
+  }
+  .print-report .border-purple-500\/40,
+  .print-report .border-purple-500\/30,
+  .print-report .border-purple-500\/20 {
+    border-color: #c4b5fd !important;
+  }
+
+  .print-report .bg-gray-500\/15,
+  .print-report .bg-gray-500\/20 {
+    background: #f9fafb !important;
+  }
+  .print-report .text-gray-400 {
+    color: #6b7280 !important;
+  }
+  .print-report .border-gray-500\/40,
+  .print-report .border-gray-500\/30 {
+    border-color: #d1d5db !important;
+  }
+
+  /* Table overflow for print */
+  .print-report table {
+    font-size: 9px !important;
+  }
+  .print-report thead {
+    display: table-header-group;
+  }
+  .print-report tr {
+    page-break-inside: avoid;
+  }
+}
+
+/* ─── Report Print Mode (forces light theme for PDF capture) ─── */
+.report-print-mode,
+.report-print-mode * {
+  --background: 0 0% 100% !important;
+  --foreground: 0 0% 10% !important;
+  --card: 0 0% 100% !important;
+  --card-foreground: 0 0% 10% !important;
+  --secondary: 0 0% 96% !important;
+  --secondary-foreground: 0 0% 20% !important;
+  --muted: 0 0% 94% !important;
+  --muted-foreground: 0 0% 40% !important;
+  --border: 0 0% 85% !important;
+  --primary: 204 85% 45% !important;
+  --primary-foreground: 0 0% 100% !important;
+}
+.report-print-mode {
+  background-color: #ffffff !important;
+  color: #1a1a1a !important;
+}
+
+/* ─── Farm Overview Map Labels ─── */
+.farm-label {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  text-align: center;
+  pointer-events: none;
+}
+
+.farm-label span {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  color: #ffffff;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8), 0 0 2px rgba(0, 0, 0, 0.6);
+  line-height: 1.3;
+}
+
+.farm-label small {
+  font-size: 9px;
+  font-weight: 400;
+  opacity: 0.85;
+}
+
+.farm-tooltip {
+  background: hsl(0 0% 7% / 0.92) !important;
+  border: 1px solid hsl(0 0% 20%) !important;
+  border-radius: 8px !important;
+  padding: 8px 12px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4) !important;
+  color: #f5f5f5 !important;
+  font-size: 12px !important;
+  line-height: 1.4 !important;
+}
+
+.farm-tooltip .leaflet-tooltip-tip {
+  border-top-color: hsl(0 0% 7% / 0.92) !important;
+}
+
+.farm-tooltip-content strong {
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.farm-tooltip-content span {
+  color: #d4d4d4;
+}

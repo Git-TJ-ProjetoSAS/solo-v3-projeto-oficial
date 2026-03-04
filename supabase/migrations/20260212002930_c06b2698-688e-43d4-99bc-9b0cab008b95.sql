@@ -1,0 +1,1 @@
+ALTER TABLE public.profiles ADD COLUMN crea_art text DEFAULT null;

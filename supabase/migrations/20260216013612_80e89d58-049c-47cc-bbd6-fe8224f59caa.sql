@@ -1,0 +1,1 @@
+ALTER TABLE public.insumos ADD COLUMN macro_ca numeric NOT NULL DEFAULT 0;
